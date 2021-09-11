@@ -19,15 +19,25 @@ type BitflyerResponse struct {
 
 func main(){
 	// get price of BTC for 1 minute, update ever 2 seconds
-	for i := 0; i < 30; i++{
+	/*for i := 0; i < 30; i++{
 		getCoinbasePrice("BTC-USD")
 		getBitflyerPrice("BTC_USD")
 		
 		fmt.Println()
 		
 		time.Sleep(2 * time.Second)
-	}
+	}*/
 	
+	// take user input on coin and get coin price for 1 minute, updating every 2 seconds
+	fmt.Println("Enter coin ticker: ")
+	var ticker string
+	fmt.Scanln(&ticker)
+	for i := 0; i < 30; i++{
+		dt := time.Now()
+		fmt.Println(dt.Format("01-02-2006 15:04:05"))
+		getCoinbasePrice(ticker + "-USD")
+		time.Sleep(2 * time.Second)
+	}
 }
 
 
